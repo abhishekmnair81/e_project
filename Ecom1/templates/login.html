@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="text-center mb-6 text-info">Sign-In</h2>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="card p-4" style="width: 450px;">
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Username</label>
+                    <input type="text" class="form-control" name="u" placeholder="Enter Username" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Password</label>
+                    <input type="password" class="form-control" name="p" placeholder="Enter Password" required>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-black">SignIn</button>
+                </div>
+
+                <div class="text-center mt-3">
+                    <p><a href="#">Forgot your password?</a></p>
+                </div>
+
+                <div class="text-center mt-3">
+                    <a href="{% url 'shop:register' %}" class="btn btn-light btn-block border">Create your account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

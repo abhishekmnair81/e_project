@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
+        <h2 class="text-center mb-4">Add Products</h2>
+
+
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card p-4" style="width: 650px;">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label fw-bold">Product Name</label>
+                <input type="text" class="form-control" name="n" placeholder="Enter product name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Image</label>
+                <input type="file" class="form-control" name="i">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Description</label>
+                <textarea class="form-control" rows="3" name="d" placeholder="Write your description" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Price</label>
+                <input type="number" class="form-control" name="p" placeholder="Enter the price" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Stock</label>
+                <input type="number" class="form-control" name="s" placeholder="Stock quantity" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Category</label>
+                <select class="form-select" name="c" required>
+                    {% for i in links %}
+                        <option value="{{ i }}">{{ i.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-black form-control">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

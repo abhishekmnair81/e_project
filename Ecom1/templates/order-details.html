@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card p-4 bg-light" style="max-width: 900px; margin: auto;">
+        <h2 class="text-center text-dark mb-4">Your Orders</h2>
+        <h4 class="text-center mb-4">Customer Name: {{ user.username }}</h4>
+        {% for i in orders %}
+        <div class="order-item border rounded mb-4 p-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ i.product.image.url }}" class="img-fluid rounded" alt="Product Image" style="height: 200px; width: 100%; object-fit: cover;">
+                </div>
+                <div class="col-md-8">
+                    <h5 class="mb-1 text-dark">Product Name: <b>{{ i.product.name }}</b></h5>
+                    <p class="mb-1 text-dark">Price: ₹<b>{{ i.product.price }}</b></p>
+                    <p class="mb-1 text-dark">Quantity: <b>{{ i.no_of_items }}</b></p>
+                    <p class="mb-1 text-dark">Order ID: <b>{{ i.order_id }}</b></p>
+                    <p class="mb-1 text-success">Ordered Date: <b>{{ i.ordered_date }}</b></p>
+                    <p class="mb-1 text-danger">Delivery Status: <b>{{ i.delivery_status }}</b></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
